@@ -1,0 +1,51 @@
+version: '3'
+
+networks: 
+  k4r-ros-network:
+    driver: bridge
+    ipam: 
+      config: 
+        - subnet: ${SUBNET}
+
+services:
+  k4r-ros-core:
+    tty: true
+    image: k4r-ros-core:latest
+    build:
+      context: ./images/k4r-ros-core-image/
+      dockerfile: Dockerfile
+      args:
+        ROS_DISTRO: ${ROS_DISTRO}
+    container_name: k4r-ros-core-container
+    networks: 
+      k4r-ros-network:
+        ipv4_address: ${ROS_IP_CORE}
+    environment: 
+      ROS_MASTER_URI: http://${ROS_IP_CORE}:11311
+      ROS_IP: ${ROS_IP_CORE}
+    entrypoint: /entrypoint.bash
+    command: roscore
+
+  k4r-iai-donbot-unreal-ws:
+    tty: true
+    image: k4r-iai-donbot-unreal-ws:latest
+    build:
+      context: ./images/k4r-iai-donbot-unreal-ws-image/
+      dockerfile: Dockerfile
+      args:
+        ROS_DISTRO: ${ROS_DISTRO}
+    container_name: k4r-iai-donbot-unreal-ws-container
+    networks:
+      k4r-ros-network:
+        ipv4_address: ${ROS_IP_UNREAL}
+    environment:
+      ROS_MASTER_URI: http://k4r-ros-core:11311
+      ROS_IP: ${ROS_IP_UNREAL}
+    volumes:
+      - type: bind
+        source: ./images/k4r-iai-donbot-unreal-ws-image/src
+        target: /home/iai_donbot_unreal_ws/src
+    entrypoint: /entrypoint.bash
+    command: sh -c "sleep 1 && roslaunch iai_donbot_unreal iai_donbot_bringup.launch"
+    depends_on:
+      - k4r-ros-core
