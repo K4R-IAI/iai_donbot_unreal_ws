@@ -37,10 +37,10 @@ services:
     container_name: k4r-iai-donbot-unreal-ws-container
     networks:
       k4r-ros-network:
-        ipv4_address: ${ROS_IP_UNREAL}
+        ipv4_address: ${ROS_IP_DONBOT_WS}
     environment:
       ROS_MASTER_URI: http://k4r-ros-core:11311
-      ROS_IP: ${ROS_IP_UNREAL}
+      ROS_IP: ${ROS_IP_DONBOT_WS}
     volumes:
       - type: bind
         source: ./images/k4r-iai-donbot-unreal-ws-image/src
