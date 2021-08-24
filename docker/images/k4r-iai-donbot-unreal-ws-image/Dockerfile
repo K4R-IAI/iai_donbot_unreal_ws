@@ -6,13 +6,16 @@ COPY src /home/iai_donbot_unreal_ws/src
 # Install prerequisites
 RUN apt-get update && apt-get install -y \
   apt-utils \
+  python-pip \
+  ros-${ROS_DISTRO}-py-trees-ros \
   ros-${ROS_DISTRO}-navigation \
+  ros-${ROS_DISTRO}-joint-trajectory-action \
   && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
 WORKDIR /home/iai_donbot_unreal_ws
-RUN apt-get update \
-   && rosdep install --from-paths src --ignore-src -r -y \
+RUN pip install casadi numpy==1.16.6 scipy==1.2.2 cython pybullet==3.0.6 sortedcontainers pandas==0.24.2
+RUN apt-get update && rosdep install --from-paths src --ignore-src -r -y \
    && rm -rf /var/lib/apt/lists/*
 
 # Build catkin workspace
