@@ -47,6 +47,8 @@ roslaunch iai_donbot_unreal iai_donbot_control.launch
 ```
 ./run_rviz.bash
 ```
+The result should look like this:
+![Result](https://github.com/K4R-IAI/iai_donbot_unreal_ws/blob/master/pics/Screenshot.png)
 ### 5. Stop docker containers 
 #### 5.1. Cancel every terminals with Ctrl + C
 #### 5.2. Remove docker containers and network
