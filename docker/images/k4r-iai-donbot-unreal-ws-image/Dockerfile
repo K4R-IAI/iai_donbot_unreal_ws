@@ -7,6 +7,7 @@ COPY src /home/iai_donbot_unreal_ws/src
 RUN apt-get update && apt-get install -y \
   apt-utils \
   python-pip \
+  python-matplotlib \
   ros-${ROS_DISTRO}-py-trees-ros \
   ros-${ROS_DISTRO}-navigation \
   ros-${ROS_DISTRO}-joint-trajectory-action \
