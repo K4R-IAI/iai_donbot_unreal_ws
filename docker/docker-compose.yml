@@ -21,8 +21,8 @@ services:
       k4r-ros-network:
         ipv4_address: ${ROS_IP_CORE}
     environment: 
-      ROS_MASTER_URI: http://${ROS_IP_CORE}:11311
-      ROS_IP: ${ROS_IP_CORE}
+      - ROS_MASTER_URI=http://${ROS_IP_CORE}:11311
+      - ROS_IP=${ROS_IP_CORE}
     entrypoint: /entrypoint.bash
     command: roscore
 
@@ -39,8 +39,8 @@ services:
       k4r-ros-network:
         ipv4_address: ${ROS_IP_DONBOT_WS}
     environment:
-      ROS_MASTER_URI: http://k4r-ros-core:11311
-      ROS_IP: ${ROS_IP_DONBOT_WS}
+      - ROS_MASTER_URI=http://k4r-ros-core:11311
+      - ROS_IP=${ROS_IP_DONBOT_WS}
     volumes:
       - type: bind
         source: ./images/k4r-iai-donbot-unreal-ws-image/src
@@ -52,6 +52,7 @@ services:
 
   k4r-rviz:
     # visible output of local simulation as rviz view.
+    tty: true
     image: k4r-rviz:latest
     build:
       context: ./images/k4r-rviz-image/
@@ -59,7 +60,6 @@ services:
       args:
         ROS_DISTRO: ${ROS_DISTRO}
     container_name: k4r-rviz-container
-    user: root
     networks: 
       k4r-ros-network:
         ipv4_address: ${ROS_IP_RVIZ}
@@ -74,5 +74,3 @@ services:
       - ./rviz-config:/rviz-config:z
     entrypoint: /entrypoint.bash
     command: ["rosrun", "rviz", "rviz", "--display-config", "/rviz-config/iai_donbot.rviz"]
-    privileged: true
-

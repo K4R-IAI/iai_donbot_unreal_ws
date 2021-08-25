@@ -6,12 +6,11 @@ COPY src /home/k4r_rviz_ws/src
 # Install prerequisites
 RUN apt-get update && apt-get install -y \
   apt-utils \
-  ros-${ROS_DISTRO}-rtabmap-ros \
-  && rm -rf /var/lib/apt/lists/*
+  ros-${ROS_DISTRO}-rtabmap-ros
 
 # Install dependencies
 WORKDIR /home/k4r_rviz_ws
-RUN apt-get update && rosdep install --from-paths src --ignore-src -r -y \
+RUN rosdep install --from-paths src --ignore-src -r -y \
    && rm -rf /var/lib/apt/lists/*
 
 # Build catkin workspace
