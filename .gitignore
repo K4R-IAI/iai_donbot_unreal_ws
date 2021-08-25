@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Ignore all packages but not .rosinstall
+docker/images/*/src
+!docker/images/*/src/.rosinstall
