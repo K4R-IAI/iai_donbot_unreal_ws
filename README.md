@@ -2,6 +2,7 @@
 
 This repository contains docker images for deploying ROS packages with https://github.com/K4R-IAI/K4R_Development
 ### 0. Prerequisites: https://docs.docker.com/compose/install
+No ROS required, No Unreal Engine required, just a PC with a good NVIDIA Graphic Card :)
 ```
 docker-compose version 1.29.2, build 5becea4c
 docker-py version: 5.0.0
