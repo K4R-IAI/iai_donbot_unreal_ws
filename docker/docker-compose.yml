@@ -10,7 +10,7 @@ networks:
 services:
   k4r-ros-core:
     tty: true
-    image: k4r-ros-core:latest
+    image: k4r-ros-core:noetic
     build:
       context: ./images/k4r-ros-core-image/
       dockerfile: Dockerfile
@@ -28,7 +28,7 @@ services:
 
   k4r-iai-donbot-unreal-ws:
     tty: true
-    image: k4r-iai-donbot-unreal-ws:latest
+    image: k4r-iai-donbot-unreal-ws:noetic
     build:
       context: ./images/k4r-iai-donbot-unreal-ws-image/
       dockerfile: Dockerfile
