@@ -9,7 +9,7 @@
     version: master
 - git:
     local-name: giskard/giskardpy
-    uri: git@github.com:SemRoCo/giskardpy.git
+    uri: git@github.com:K4R-IAI/giskardpy.git
     version: master
 - git:
     local-name: giskard/qpoases
@@ -33,8 +33,8 @@
     version: master
 - git:
     local-name: rosbridge_suite
-    uri: git@github.com:RobotWebTools/rosbridge_suite.git
-    version: d2065f0da685657fdd292e93f51de4ead317bf1b
+    uri: git@github.com:K4R-IAI/rosbridge_suite.git
+    version: 0.11.3
 - git:
     local-name: unreal_vision_bridge
     uri: git@github.com:K4R-IAI/unreal_vision_bridge.git
