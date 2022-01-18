@@ -7,12 +7,13 @@ COPY src /home/iai_donbot_unreal_ws/src
 WORKDIR /home/iai_donbot_unreal_ws
 RUN apt-get update && apt-get install -y \
   apt-utils \
-  python-pip \
-  python-matplotlib \
+  python3-pip \
+  python3-matplotlib \
   ros-${ROS_DISTRO}-py-trees-ros \
   ros-${ROS_DISTRO}-navigation \
-  ros-${ROS_DISTRO}-joint-trajectory-action
-RUN pip install casadi numpy==1.16.6 scipy==1.2.2 cython pybullet==3.0.6 sortedcontainers pandas==0.24.2
+  ros-${ROS_DISTRO}-joint-trajectory-action \
+  python-is-python3
+RUN pip3 install casadi numpy scipy cython pybullet sortedcontainers pandas pymongo tornado twisted
 RUN rosdep install --from-paths src --ignore-src -r -y \
    && rm -rf /var/lib/apt/lists/*
 

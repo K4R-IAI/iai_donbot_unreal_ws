@@ -6,15 +6,15 @@
 - git:
     local-name: giskard/giskard_msgs
     uri: git@github.com:SemRoCo/giskard_msgs.git
-    version: devel
+    version: master
 - git:
     local-name: giskard/giskardpy
     uri: git@github.com:SemRoCo/giskardpy.git
-    version: devel
+    version: master
 - git:
     local-name: giskard/qpoases
     uri: git@github.com:SemRoCo/qpOASES.git
-    version: 3.2.1
+    version: noetic
 - git:
     local-name: iai_common_msgs
     uri: git@github.com:code-iai/iai_common_msgs.git
