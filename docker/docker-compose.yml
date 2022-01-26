@@ -10,7 +10,7 @@ networks:
 services:
   k4r-ros-core:
     tty: true
-    image: k4r-ros-core:melodic
+    image: k4r-ros-core:${ROS_DISTRO}
     build:
       context: ./images/k4r-ros-core-image/
       dockerfile: Dockerfile
@@ -28,7 +28,7 @@ services:
 
   k4r-iai-donbot-unreal-ws:
     tty: true
-    image: k4r-iai-donbot-unreal-ws:melodic
+    image: k4r-iai-donbot-unreal-ws:${ROS_DISTRO}
     build:
       context: ./images/k4r-iai-donbot-unreal-ws-image/
       dockerfile: Dockerfile
@@ -53,7 +53,7 @@ services:
   k4r-rviz:
     # visible output of local simulation as rviz view.
     tty: true
-    image: k4r-rviz:latest
+    image: k4r-rviz:${ROS_DISTRO}
     build:
       context: ./images/k4r-rviz-image/
       dockerfile: Dockerfile
